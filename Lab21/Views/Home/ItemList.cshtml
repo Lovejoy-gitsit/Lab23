@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Items";
+}
+
+<h2>Items</h2>
+
+<div class="panel-collapse">
+    <div class="panel-primary">
+        @foreach (var c in ViewBag.ItemsList)
+        {<div class="col-md-6 col-xs-6">
+
+                <h4>@c.Name</h4>
+                <h4>@c.Description</h4>
+                <h4>@c.Price</h4>
+            </div>
+
+
+
+
+        }
+    </div>
+</div>
+
+
+
