@@ -1,11 +1,9 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Admin";
 }
 
-<h1>Welcome to GC Coffee Shop</h1>
-<a href="/Home/UserRegistration">Register</a>
-<h2>Items</h2>
-
+<h2>Admin</h2>
 <div class="panel-collapse">
     <div class="panel-primary">
 
@@ -21,18 +19,28 @@
                 </thead>
                 <tbody>
                     @foreach (var c in ViewBag.ItemsList)
-                    {
-                        <tr>
-                            <td>@c.Name</td>
-                            <td>@c.Description</td>
-                            <td>@c.Quantity</td>
-                            <td>@c.Price</td>
+                     {
+                    <tr>
+                        <td>@c.Name</td>
+                        <td>@c.Description</td>
+                        <td>@c.Quantity</td>
+                        <td>@c.Price</td>
+                        <td><a href="/Home/Edit?Name=@c.Name">Edit</a></td>
+                        <td><a href="/Home/Delete?Name=@c.Name">Delete</a></td>
+                    </tr>
 
-                        </tr>
-                    }
+                     }
                 </tbody>
             </table>
-        </div>
 
+        </div>
+        
     </div>
 </div>
+<br /><br />
+            <td><a href="/Home/Additem">Add a New Item</a></td>
+
+
+
+
+

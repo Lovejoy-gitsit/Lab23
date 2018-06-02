@@ -11,6 +11,9 @@ namespace Lab21.Controllers
     {
         public ActionResult Index()
         {
+            CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
+
+            ViewBag.ItemsList = ORM.items.ToList();
             return View();
         }
 
@@ -56,18 +59,76 @@ namespace Lab21.Controllers
 
         }
 
-        public ActionResult ItemList()
+        public ActionResult Additem(item newItem)
         {
             CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
-            
+            if (ModelState.IsValid)
+            {
+               
+                ORM.items.Add(newItem);
+                ORM.SaveChanges();
+
+                ViewBag.ItemList = ORM.items.ToList();
+                ViewBag.Message = "Item Added";
+                return View("Index");
+            }
+            else
+            {
+                ViewBag.Message = "Error";
+                return View("Error");
+            }
+        }
+
+        public ActionResult Admin()
+        {
+            CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
             ViewBag.ItemsList = ORM.items.ToList();
             return View();
         }
 
-       
+        public ActionResult Edit(string Name)
+        {
+            //created ORM
+            CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
+
+            //locate item to update
+            item toUpdate = ORM.items.Find(Name);
+            return View(toUpdate);
+        } 
+        
+        public ActionResult Saveitem(item updateditem)
+        {
+            CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
+
+            item Olditem = ORM.items.Find(updateditem.Name);
+            if (Olditem != null && ModelState.IsValid)
+            {
+                Olditem.Name = updateditem.Name;
+                Olditem.Description = updateditem.Description;
+                Olditem.Quantity = updateditem.Quantity;
+                Olditem.Price = updateditem.Price;
+
+                //then modify the new data and enter into the database
+                ORM.Entry(Olditem).State = System.Data.Entity.EntityState.Modified;
+                //Save changes
+                ORM.SaveChanges();
+                return RedirectToAction("Admin");
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Item not edited";
+                return View("Error");
+            }
+        }
+
+        public ActionResult Delete()
+        {
+        CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
+        ViewBag.ItemList = ORM.items.ToList();
+        return View();
+        }
 
         
-        
-
+            
     }
 }

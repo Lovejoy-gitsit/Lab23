@@ -7,20 +7,41 @@
 
 <div class="panel-collapse">
     <div class="panel-primary">
+        
+            <div class="col-md-12 col-xs-8">
+             <table class="table">
+                 <thead>
+                     <tr>
+                         <th scope="col">Name</th>
+                         <th scope="col">Description</th>
+                         <th scope="col">Quantity</th>
+                         <th scope="col">Price</th>
+                     </tr>
+                 </thead>
+                 <tbody>
         @foreach (var c in ViewBag.ItemsList)
-        {<div class="col-md-6 col-xs-6">
-
-                <h4>@c.Name</h4>
-                <h4>@c.Description</h4>
-                <h4>@c.Price</h4>
-            </div>
-
-
-
-
-        }
+         {
+                    <tr>
+                      
+                    
+                     <td>@c.Name</td>
+                     <td>@c.Description</td>
+                     <td>@c.Quantity</td>
+                     <td>@c.Price</td>
+                    
+                 </tr>
+                     
+                     
+            
+         }
+        </tbody>
+           </table>
+           </div>
+                     
     </div>
 </div>
+
+
 
 
 
