@@ -154,26 +154,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CoffeeshopDB.Context.cs">
+    <Compile Include="Models\CoffeeShopEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CoffeeshopDB.Context.tt</DependentUpon>
+      <DependentUpon>CoffeeShopEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CoffeeshopDB.cs">
+    <Compile Include="Models\CoffeeShopEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CoffeeshopDB.tt</DependentUpon>
+      <DependentUpon>CoffeeShopEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CoffeeshopDB.Designer.cs">
+    <Compile Include="Models\CoffeeShopEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CoffeeshopDB.edmx</DependentUpon>
+      <DependentUpon>CoffeeShopEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\item.cs">
-      <DependentUpon>CoffeeshopDB.tt</DependentUpon>
+      <DependentUpon>CoffeeShopEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\user.cs">
-      <DependentUpon>CoffeeshopDB.tt</DependentUpon>
+      <DependentUpon>CoffeeShopEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -185,27 +185,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\CoffeeshopDB.Context.tt">
+    <Content Include="Models\CoffeeShopEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CoffeeshopDB.Context.cs</LastGenOutput>
-      <DependentUpon>CoffeeshopDB.edmx</DependentUpon>
+      <DependentUpon>CoffeeShopEntities.edmx</DependentUpon>
+      <LastGenOutput>CoffeeShopEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\CoffeeshopDB.tt">
+    <Content Include="Models\CoffeeShopEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CoffeeshopDB.edmx</DependentUpon>
-      <LastGenOutput>CoffeeshopDB.cs</LastGenOutput>
+      <DependentUpon>CoffeeShopEntities.edmx</DependentUpon>
+      <LastGenOutput>CoffeeShopEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\CoffeeshopDB.edmx">
+    <EntityDeploy Include="Models\CoffeeShopEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CoffeeshopDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>CoffeeShopEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\CoffeeshopDB.edmx.diagram">
-      <DependentUpon>CoffeeshopDB.edmx</DependentUpon>
+    <Content Include="Models\CoffeeShopEntities.edmx.diagram">
+      <DependentUpon>CoffeeShopEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -218,7 +218,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -237,10 +239,10 @@
     <Content Include="Views\Home\Add.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Home\Registration.cshtml" />
-    <Content Include="Views\Home\ItemList.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
-    <Content Include="Views\Home\Additem.cshtml" />
+    <Content Include="Views\Home\SaveNewItem.cshtml" />
+    <Content Include="Views\Home\AddItem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,4 +5,8 @@
 
 <h2>Registration</h2>
 <h1>@ViewBag.Message</h1>
+<form action="/Home/AddItem" method="post">
+<input type="hidden" id="userID" name="userID" value="@ViewBag.userID"/>
+<input type="submit" value="Add a task"/>
+</form>
 

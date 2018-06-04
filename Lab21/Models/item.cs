@@ -18,5 +18,9 @@ namespace Lab21.Models
         public string Description { get; set; }
         public int Quantity { get; set; }
         public decimal Price { get; set; }
+        public int TaskID { get; set; }
+        public int UserID { get; set; }
+    
+        public virtual user user { get; set; }
     }
 }

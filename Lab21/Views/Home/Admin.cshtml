@@ -26,7 +26,7 @@
                         <td>@c.Quantity</td>
                         <td>@c.Price</td>
                         <td><a href="/Home/Edit?Name=@c.Name">Edit</a></td>
-                        <td><a href="/Home/Delete?Name=@c.Name">Delete</a></td>
+                        <td><a href="/Home/Delete?TaskID=@c.TaskID">Delete</a></td>
                     </tr>
 
                      }
@@ -38,7 +38,10 @@
     </div>
 </div>
 <br /><br />
-            <td><a href="/Home/Additem">Add a New Item</a></td>
+            <td><form action="/Home/AddItem" method="post">
+    <input type="hidden" id="userID" name="userID" value="@ViewBag.userID" />
+    <input type="submit" value="Add a task" />
+</form></td>
 
 
 

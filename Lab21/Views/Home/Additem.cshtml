@@ -1,16 +1,16 @@
 ﻿
 @{
-    ViewBag.Title = "Additem";
+    ViewBag.Title = "AddItem";
 }
 
-<h2>Additem</h2>
+<h2>AddItem</h2>
 
-<form action="/Home/Additem" method="post">
-    <input type="text" name="Name" placeholder="Enter Item"/><br /><br />
-    <input type="text" name="Description" placeholder="Enter Description"/><br /><br />
+<form action="/Home/SaveNewItem" method="post">
+    <input type="hidden" id="userID" name="userID" value="@ViewBag.userID" />
+    <input type="text" name="Name" placeholder="Enter Item" /><br /><br />
+    <input type="text" name="Description" placeholder="Enter Description" /><br /><br />
     <input type="text" name="Quantity" placeholder="Enter Quantity" /><br /><br />
     <input type="text" name="Price" placeholder="Enter Price" /><br /><br />
     <input type="submit" value="Add" /><br /><br />
 </form>
-
 

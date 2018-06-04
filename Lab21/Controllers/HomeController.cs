@@ -38,14 +38,21 @@ namespace Lab21.Controllers
             return View();
         }
 
-        public ActionResult Add(user newUser)
+        public ActionResult Add(string FirstName, string LastName, string Email, string Phone, string Password )
         {
             if (ModelState.IsValid)
             {
                 CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
-
+                user newUser = new user();
+                newUser.FirstName = FirstName;
+                newUser.LastName = LastName;
+                newUser.Email = Email;
+                newUser.Phone = Phone;
+                newUser.Password = Password;
                 ORM.users.Add(newUser);
                 ORM.SaveChanges();
+                newUser = ORM.users.FirstOrDefault(x => x.Email == newUser.Email);
+                ViewBag.UserID = newUser.UserID;
 
                 ViewBag.Message = "Confirmed";
                 return View("Registration");
@@ -59,24 +66,30 @@ namespace Lab21.Controllers
 
         }
 
-        public ActionResult Additem(item newItem)
+        public ActionResult SaveNewItem(item newItem, int userID)
         {
             CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
             if (ModelState.IsValid)
             {
-               
+                newItem.UserID = userID;
                 ORM.items.Add(newItem);
                 ORM.SaveChanges();
 
-                ViewBag.ItemList = ORM.items.ToList();
-                ViewBag.Message = "Item Added";
-                return View("Index");
+                ViewBag.ItemsList = ORM.items.ToList();
+                ViewBag.userID = userID;
+                return View("Admin");
             }
             else
             {
                 ViewBag.Message = "Error";
                 return View("Error");
             }
+        }
+
+        public ActionResult AddItem(int userID)
+        {
+            ViewBag.userID = userID;
+            return View();
         }
 
         public ActionResult Admin()
@@ -121,11 +134,25 @@ namespace Lab21.Controllers
             }
         }
 
-        public ActionResult Delete()
+        public ActionResult Delete(int TaskID)
         {
-        CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
-        ViewBag.ItemList = ORM.items.ToList();
-        return View();
+            CoffeeShopDBEntities ORM = new CoffeeShopDBEntities();
+            item deleteditem = ORM.items.FirstOrDefault(x => x.TaskID == TaskID);
+            try
+
+            {
+                ORM.items.Remove(deleteditem);
+                ORM.SaveChanges();
+            }
+            catch
+            {
+                ViewBag.Message = "Error";
+                
+                return View("Error");
+            }
+            ViewBag.ItemsList = ORM.items.ToList();
+            return View("Admin");
+
         }
 
         
